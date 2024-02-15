@@ -1,0 +1,347 @@
+.<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>F1 simulator registration</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      *
+      {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body
+      {
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(32,16,192,1) 100%);
+        height: 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      .container
+      {
+        place-items: center;
+        position: absolute;
+        width: 300px;
+        height: 500px;
+        padding: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 10px;
+      }
+      .container img
+      {
+        margin-left: 25px;
+      }
+      .container input
+      {
+        width: 100%;
+        height: 50px;
+        border: 1px solid gray;
+        padding: 10px;
+        margin: 10px 0 10px;
+      }
+      .container label
+      {
+        font-size: 14px;
+        margin: 10px 0 50px;
+        padding: 10px;
+      }
+      .container select
+      {
+        width: 100%;
+        height: 30px;
+        border: 1px solid gray;
+        padding: 5px;
+        margin: 10px 0 15px;
+      }
+      .container button
+      {
+        width: 100%;
+        height: 50px;
+        background: #240c54;
+        color: white;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        margin-top: 10px;
+      }
+      #notification
+      {
+        font-weight: 200;
+        font-size: 14px;
+        text-align: center;
+        padding: 16px;
+      }
+    </style>
+    <script src="easy.qrcode.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <img src="logo.svg" width="200px" />
+      <form action="">
+        <input type="text" id="firstName" name="firstName" maxlength="24" required placeholder="Firstname" />
+        <input type="text" id="lastName" name="lastName" maxlength="32" required placeholder="Lastname" />
+        <input type="email" id="email" name="email" maxlength="80" required placeholder="Email" />
+        <select name="nationality" id="nationality" required required placeholder="Nationality">
+          <option value="" disabled selected>Nationality</option>
+        </select>
+      </form>
+      <button type="submit" id="SubmitButton">SUBMIT</button>
+      <p id="notification"></p>
+    </div>
+    <script>
+      const countries = [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        "Angola",
+        "Antigua and Deps",
+        "Argentina",
+        "Armenia",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "Bahamas",
+        "Bahrain",
+        "Bangladesh",
+        "Barbados",
+        "Belarus",
+        "Belgium",
+        "Belize",
+        "Benin",
+        "Bhutan",
+        "Bolivia",
+        "Bosnia and Herzegovina",
+        "Botswana",
+        "Brazil",
+        "Brunei",
+        "Bulgaria",
+        "Burkina Faso",
+        "Burundi",
+        "Cambodia",
+        "Cameroon",
+        "Canada",
+        "Cape Verde",
+        "Central African Republic",
+        "Chile",
+        "China",
+        "Columbia",
+        "Comoros",
+        "Republic of Congo",
+        "Democratic Republic of Congo",
+        "Democratic Republic of Korea",
+        "Costa Rica",
+        "Croatia",
+        "Cuba",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Djibouti",
+        "Dominica",
+        "Dominican Republic",
+        "East Timor",
+        "Ecuador",
+        "Egypt",
+        "El Salvador",
+        "Equatorial Guinea",
+        "Eritrea",
+        "Estonia",
+        "Ethiopia",
+        "Federated States of Micronesia",
+        "Fiji",
+        "Finland",
+        "France",
+        "Gabon",
+        "Gambia",
+        "Georgia",
+        "Germany",
+        "Ghana",
+        "Greece",
+        "Greneda",
+        "Guinea",
+        "Guinea Bissau",
+        "Guyana",
+        "Haiti",
+        "Honduras",
+        "Hungary",
+        "Iceland",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Jamaica",
+        "Japan",
+        "Jordan",
+        "Kazakhstan",
+        "Kenya",
+        "Kiribiti",
+        "Kosovo",
+        "Kuwait",
+        "Kyrgyzstan",
+        "Laos",
+        "Lebanon",
+        "Lesotho",
+        "Liberia",
+        "Libya",
+        "Liechtenstein",
+        "Lithuania",
+        "Luxembourg",
+        "Macedonia",
+        "Madagascar",
+        "Malawi",
+        "Malasiya",
+        "Maldives",
+        "Mali",
+        "Malta",
+        "Marshall Island",
+        "Mauritiana",
+        "Mauritius",
+        "Mexico",
+        "Moldova",
+        "Monaco",
+        "Mongolia",
+        "Montenegro",
+        "Morocco",
+        "Mozambique",
+        "Myanmar",
+        "Namibia",
+        "Nauru",
+        "Nepal",
+        "Netherlands",
+        "New Zealand",
+        "Nicaragua",
+        "Niger",
+        "Nigeria",
+        "Norway",
+        "Oman",
+        "Pakistan",
+        "Palau",
+        "Panama",
+        "Papua New Guinea",
+        "Paraguay",
+        "Peru",
+        "Philippines",
+        "Poland",
+        "Portugal",
+        "Qatar",
+        "Romania",
+        "Russia",
+        "Rawanda",
+        "Saint Kitts and Nevis",
+        "Saint Lucia",
+        "Saint Vincent and Grenadines",
+        "Samoa",
+        "San Marino",
+        "Sao Tome & Principe",
+        "Saudi Arabia",
+        "Senegal",
+        "Serbia",
+        "Seychelles",
+        "Sierra Leone",
+        "Singapore",
+        "Slovakia",
+        "Slovenia",
+        "Solomon Island",
+        "Somalia",
+        "South Africa",
+        "Soiuth Sudan",
+        "South Korea",
+        "Spain",
+        "Sri Lanka",
+        "Sudan",
+        "Suriname",
+        "Swaziland",
+        "Sweden",
+        "Switzerland",
+        "Syria",
+        "Taiwan",
+        "Tajikistan",
+        "Tanzania",
+        "Thailand",
+        "Togo",
+        "Tonga",
+        "Trinidad and Tobago",
+        "Tunisia",
+        "Turkey",
+        "Turkmenistan",
+        "Tuvalu",
+        "Uganda",
+        "Ukraine",
+        "United Arab Emirates",
+        "United Kingdom",
+        "United States of America",
+        "Uruguay",
+        "Uzbekistan",
+        "Vanuatu",
+        "Vatican City",
+        "Venezuela",
+        "Vietnam",
+        "Yemen",
+        "Zambia",
+        "Zimbabwe",
+      ];
+      let select = document.getElementById("nationality");
+      countries.forEach((country) =>
+      {
+        const option = new Option(country, country);
+        select.appendChild(option);
+      });
+      
+      document.getElementById('SubmitButton').addEventListener('click',SubmitButton);
+      function SubmitButton() {
+        let firstNameText = document.getElementById("firstName").value;
+        let lastNameText = document.getElementById("lastName").value;
+        let emailText = document.getElementById("email").value;
+        let nationalityText = document.getElementById("nationality").value;
+        let notification = document.getElementById("notification");
+        let regdate = new Date().getTime();
+        if (firstName.value==""||lastName.value==""||email.value==""||nationality.value=="")
+        {
+          notification.innerText = "Please complete all fields";
+          return;
+        };
+        if (!email.value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/))
+        {
+          notification.innerText = "Please enter a valid email address";
+          return;
+        };
+        notification.innerText = "Thank you for registering";
+        let qrString = [firstNameText,lastNameText,emailText,nationalityText,regdate.toString()].join("~");
+        new QRCode(document.createElement('div'),{text:qrString,width:380,height:380,colorDark:"#000000",colorLight:"#ffffff",quietZone:18,logo:"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTM1LjMzIiBoZWlnaHQ9IjEzNS4zMyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTM1LjMzIDEzNS4zMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDxnPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI0LjQ0IDY2LjUyYzIuMDkgMCA0LjItMC4yMSA2LjM0LTAuNTkgMS44OC0xOS4yNSAxOC4xNS0zNC4zNiAzNy45LTM0LjM2IDkuNTIgMCAxOC4yNCAzLjUyIDI0LjkzIDkuMzIgMi44Mi0wLjQ5IDUuNjctMC43NiA4LjU2LTAuNzYgMS4xNyAwIDIuMzEgMC4wNCAzLjQ1IDAuMTMtOC42Mi0xMi4yMi0yMi44NC0yMC4yLTM4LjkyLTIwLjItMjUuNzQgMC00Ni43MSAyMC40My00Ny41NyA0NS45NiAxLjcyIDAuMzMgMy40OSAwLjQ5IDUuMzEgMC40OXoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im04OC42NiAxMDIuMDhjLTUuNzQgMy40OC0xMi43OSA1LjY0LTE5Ljk4IDUuNjQtMTEuMjQgMC0yMS4zNS00LjktMjguMzMtMTIuNjYtMC45MSAwLjA1LTEuODMgMC4wOC0yLjc1IDAuMDgtMy41MyAwLTcuMDMtMC4zNC0xMC40Ny0wLjk5IDguNTUgMTIuNzQgMjMuMDcgMjEuMTIgMzkuNTYgMjEuMTIgMTEuMjUgMCAyMS41OC0zLjkgMjkuNzMtMTAuNDMtMi44Ni0wLjU4LTUuNDYtMS41OC03Ljc0LTIuNzQgMCAwLTAuMDIgMC0wLjAzLTAuMDF6Ii8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMTEyLjQ4IDkxLjU4cy03LjU4LTUuNjktMTQuOTgtNS42OWMtMy41OSAwLTcuNTYgMC43OS0xMS44IDIuMzQgMCAwIDEzLjM5IDE0LjYxIDI2Ljc4IDMuMzV6Ii8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMTMzLjQ2IDg1LjI4YzcuMDYtMy4wNy02Ljg0LTE3LjYxLTI0Ljk4LTE3Ljk0LTE0LjkzLTAuMjctMjguNDEgMTEuODktMjguNDEgMTEuODkgMzYuNzMtOS4wMyA0OC4xMyA4LjMzIDUzLjM5IDYuMDV6Ii8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzcuNiA4NS42MmMzNi4xNSAwIDU3LjI4LTQ4LjEyIDk2LjM1LTE3Ljc1LTQyLjc4LTU1LjA0LTg3LjM0IDM1LjU4LTEzMy45NS0wLjY3IDguOTcgMTEuNTQgMjIuOTYgMTguNDIgMzcuNiAxOC40MnoiLz4KIDwvZz4KPC9zdmc+Cg==",correctLevel:QRCode.CorrectLevel.M,onRenderingEnd:function(options,dataURL){sendit(dataURL)}});
+        function sendit(qrpng)
+        {
+          //qr=document.createElement("img");qr.src=qrpng;document.body.appendChild(qr);return;
+          const XHR = new XMLHttpRequest();
+          const FD = new FormData();
+          XHR.onreadystatechange = function(){if(XHR.status==200){setTimeout(window.open("https://wim.ae/","_self"),3500);}};
+          FD.append("firstname",firstNameText);
+          FD.append("lastname",lastNameText);
+          FD.append("email",emailText);
+          FD.append("nationality",nationalityText);
+          FD.append("regdate",regdate);
+          FD.append("qrpng",qrpng.replace(/^data:image\/png;base64,/, ""));
+          XHR.open("POST","https://elementzlive.ae/app/f1/f1qr.php");
+          XHR.send(FD);
+          firstName.value = "";
+          lastName.value = "";
+          email.value = "";
+          nationality.selectedIndex = 0;
+        };
+      }
+    </script>
+  </body>
+</html>
