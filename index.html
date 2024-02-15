@@ -1,4 +1,4 @@
-.<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -321,7 +321,7 @@
         };
         notification.innerText = "Thank you for registering";
         let qrString = [firstNameText,lastNameText,emailText,nationalityText,regdate.toString()].join("~");
-        new QRCode(document.createElement('div'),{text:qrString,width:380,height:380,colorDark:"#000000",colorLight:"#ffffff",quietZone:18,logo:"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTM1LjMzIiBoZWlnaHQ9IjEzNS4zMyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTM1LjMzIDEzNS4zMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDxnPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0ibTI0LjQ0IDY2LjUyYzIuMDkgMCA0LjItMC4yMSA2LjM0LTAuNTkgMS44OC0xOS4yNSAxOC4xNS0zNC4zNiAzNy45LTM0LjM2IDkuNTIgMCAxOC4yNCAzLjUyIDI0LjkzIDkuMzIgMi44Mi0wLjQ5IDUuNjctMC43NiA4LjU2LTAuNzYgMS4xNyAwIDIuMzEgMC4wNCAzLjQ1IDAuMTMtOC42Mi0xMi4yMi0yMi44NC0yMC4yLTM4LjkyLTIwLjItMjUuNzQgMC00Ni43MSAyMC40My00Ny41NyA0NS45NiAxLjcyIDAuMzMgMy40OSAwLjQ5IDUuMzEgMC40OXoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im04OC42NiAxMDIuMDhjLTUuNzQgMy40OC0xMi43OSA1LjY0LTE5Ljk4IDUuNjQtMTEuMjQgMC0yMS4zNS00LjktMjguMzMtMTIuNjYtMC45MSAwLjA1LTEuODMgMC4wOC0yLjc1IDAuMDgtMy41MyAwLTcuMDMtMC4zNC0xMC40Ny0wLjk5IDguNTUgMTIuNzQgMjMuMDcgMjEuMTIgMzkuNTYgMjEuMTIgMTEuMjUgMCAyMS41OC0zLjkgMjkuNzMtMTAuNDMtMi44Ni0wLjU4LTUuNDYtMS41OC03Ljc0LTIuNzQgMCAwLTAuMDIgMC0wLjAzLTAuMDF6Ii8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMTEyLjQ4IDkxLjU4cy03LjU4LTUuNjktMTQuOTgtNS42OWMtMy41OSAwLTcuNTYgMC43OS0xMS44IDIuMzQgMCAwIDEzLjM5IDE0LjYxIDI2Ljc4IDMuMzV6Ii8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMTMzLjQ2IDg1LjI4YzcuMDYtMy4wNy02Ljg0LTE3LjYxLTI0Ljk4LTE3Ljk0LTE0LjkzLTAuMjctMjguNDEgMTEuODktMjguNDEgMTEuODkgMzYuNzMtOS4wMyA0OC4xMyA4LjMzIDUzLjM5IDYuMDV6Ii8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtMzcuNiA4NS42MmMzNi4xNSAwIDU3LjI4LTQ4LjEyIDk2LjM1LTE3Ljc1LTQyLjc4LTU1LjA0LTg3LjM0IDM1LjU4LTEzMy45NS0wLjY3IDguOTcgMTEuNTQgMjIuOTYgMTguNDIgMzcuNiAxOC40MnoiLz4KIDwvZz4KPC9zdmc+Cg==",correctLevel:QRCode.CorrectLevel.M,onRenderingEnd:function(options,dataURL){sendit(dataURL)}});
+        new QRCode(document.createElement('div'),{text:qrString,width:380,height:380,colorDark:"#000000",colorLight:"#ffffff",quietZone:18,correctLevel:QRCode.CorrectLevel.L,onRenderingEnd:function(options,dataURL){sendit(dataURL)}});
         function sendit(qrpng)
         {
           //qr=document.createElement("img");qr.src=qrpng;document.body.appendChild(qr);return;
