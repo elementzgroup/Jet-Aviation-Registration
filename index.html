@@ -297,10 +297,9 @@
       let select = document.getElementById("nationality");
       countries.forEach((country) =>
       {
-        const option = new Option(country, country);
+        const option = new Option(country,country);
         select.appendChild(option);
       });
-      
       document.getElementById('SubmitButton').addEventListener('click',SubmitButton);
       function SubmitButton() {
         let firstNameText = document.getElementById("firstName").value;
@@ -319,9 +318,11 @@
           notification.innerText = "Please enter a valid email address";
           return;
         };
+        document.getElementById("container").style.display="none";
+        document.getElementById("msgthanks").style.display="block";
         notification.innerText = "Thank you for registering";
         let qrString = [firstNameText,lastNameText,emailText,nationalityText,regdate.toString()].join("~");
-        new QRCode(document.createElement('div'),{text:qrString,width:380,height:380,colorDark:"#000000",colorLight:"#ffffff",quietZone:18,correctLevel:QRCode.CorrectLevel.L,onRenderingEnd:function(options,dataURL){sendit(dataURL)}});
+        new QRCode(document.createElement('div'),{text:qrString,width:400,height:400,colorDark:"#000000",colorLight:"#ffffff",quietZone:22,correctLevel:QRCode.CorrectLevel.L,onRenderingEnd:function(options,dataURL){sendit(dataURL)}});
         function sendit(qrpng)
         {
           //qr=document.createElement("img");qr.src=qrpng;document.body.appendChild(qr);return;
@@ -333,7 +334,7 @@
           FD.append("email",emailText);
           FD.append("nationality",nationalityText);
           FD.append("regdate",regdate);
-          FD.append("qrpng",qrpng.replace(/^data:image\/png;base64,/, ""));
+          FD.append("qrpng",qrpng.replace(/^data:image\/png;base64,/,""));
           XHR.open("POST","https://elementzlive.ae/app/f1/f1qr.php");
           XHR.send(FD);
           firstName.value = "";
