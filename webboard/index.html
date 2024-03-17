@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Web App</title>
+  </head>
+  <body>
+    <video id="qr-video" height="480"></video>
+    <div id="qr-result">Waiting for QR code scan...</div>
+    <button id="qrStartBtn">QR Start</button>
+    <button id="qrStopBtn">QR Stop</button>
+    <div>
+      Server Address: <input type="text" id="serverURL"><br>
+      <label for="boxConnect"><input type="checkbox" id="boxConnect">Connect</label>
+      &nbsp;&nbsp;<span id="connectionSpan">???</span><br>
+      Outgoing message: <input type="text" id="outgoingText"><br>
+      Incoming message: <input type="text" id="incomingText" disabled="disabled"><br>
+      Screenshot:<br>
+      <img id="imageScreenshot" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="No screenshot available" width="500" height="500"><br>
+    </div>
+  </body>
+  <script type="module">
+    import QrScanner from "./qr-scanner.min.js";
+    document.getElementById("qrStartBtn").addEventListener("click",()=>{scanner.start();});
+    document.getElementById("qrStopBtn").addEventListener("click",()=>{scanner.stop();});
+    const scanner = new QrScanner(document.getElementById("qr-video"),result=>setResult(result),{highlightScanRegion:true,highlightCodeOutline:true});
+    scanner.setInversionMode("both");
+    scanner.start();
+    function setResult(result)
+    {
+      console.log(result.data);
+      document.getElementById("qr-result").innerHTML = result.data;
+      scanner.stop();
+    }
+  </script>
+  <script>
+    document.getElementById("serverURL").value = new URLSearchParams(window.location.search).get("wsaddr");
+    let socket;
+    document.getElementById("boxConnect").addEventListener("change",wsConnect);
+    document.getElementById("outgoingText").addEventListener("change",wsSendMessage);
+    function wsConnect()
+    {
+      if (this.checked)
+        socket = new WebSocket(document.getElementById("serverURL").value);
+      else
+        socket.close();
+      socket.binaryType = "arraybuffer";
+      socket.onopen = function(e)
+      {
+        document.getElementById("connectionSpan").style.color = "#00FF00"; 
+        document.getElementById("connectionSpan").innerHTML = "CONNECTED";
+        document.getElementById("boxConnect").checked = true;
+      };
+      socket.onmessage = function(event)
+      {
+        console.log("INCOMING!!!");
+        if (typeof event.data === "string")
+        {
+          console.log("Received datatype: STRING");
+        }
+        else
+        {
+          console.log("Received datatype: BINARY");
+        };
+        if (event.data instanceof ArrayBuffer)
+        {
+          document.getElementById("imageScreenshot").src = URL.createObjectURL(new Blob([event.data],{type:"image/png"}));
+        }
+        else
+        {
+          document.getElementById("incomingText").value = event.data;
+        }
+      };
+      socket.onclose = function()
+      {
+        document.getElementById("connectionSpan").style.color = "#FF0000"; 
+        document.getElementById("connectionSpan").innerHTML = "DISCONNECTED";
+        document.getElementById("boxConnect").checked = false;
+      };
+    }
+    function wsSendMessage()
+    {
+      if (socket.readyState === WebSocket.OPEN)
+      {
+        console.log("OUTGOING!!!");
+        socket.send(document.getElementById("outgoingText").value);
+        console.log("Sending string..." );
+      }
+    };
+// Usage - note optional wsaddr parameter in url:
+// http://127.0.0.1/ws/?wsaddr=ws://localhost:1880/f1
+// Camera access only available via localhost or https
+// Included webflow.json file for node-red testing
+</script>
+</html>

@@ -1,0 +1,192 @@
+[
+    {
+        "id": "34294be738b7699a",
+        "type": "tab",
+        "label": "WebSocketsTest",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7e88dbc44428f6b7",
+        "type": "websocket in",
+        "z": "34294be738b7699a",
+        "name": "",
+        "server": "",
+        "client": "d4b78eb653d6d50d",
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "8d6baf93795dbb2d"
+            ]
+        ]
+    },
+    {
+        "id": "c8702971b0292f9b",
+        "type": "websocket out",
+        "z": "34294be738b7699a",
+        "name": "",
+        "server": "",
+        "client": "d4b78eb653d6d50d",
+        "x": 520,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "add81a976ccf2a2b",
+        "type": "inject",
+        "z": "34294be738b7699a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "timestamp",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "ecf7b9b301095b7c"
+            ]
+        ]
+    },
+    {
+        "id": "8d6baf93795dbb2d",
+        "type": "debug",
+        "z": "34294be738b7699a",
+        "name": "DEBUG",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3d6a13e17814e375",
+        "type": "websocket in",
+        "z": "34294be738b7699a",
+        "name": "",
+        "server": "452f751e15337c46",
+        "client": "",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "ecf7b9b301095b7c"
+            ]
+        ]
+    },
+    {
+        "id": "6160b4da46db22ad",
+        "type": "websocket out",
+        "z": "34294be738b7699a",
+        "name": "",
+        "server": "452f751e15337c46",
+        "client": "",
+        "x": 680,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "13445f0e40d15564",
+        "type": "file in",
+        "z": "34294be738b7699a",
+        "name": "logo",
+        "filename": "/home/user/Desktop/elementz/elementz-logo-320.png",
+        "filenameType": "str",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "ecf7b9b301095b7c"
+            ]
+        ]
+    },
+    {
+        "id": "dda3eeb32975667e",
+        "type": "inject",
+        "z": "34294be738b7699a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "file",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "13445f0e40d15564"
+            ]
+        ]
+    },
+    {
+        "id": "ecf7b9b301095b7c",
+        "type": "function",
+        "z": "34294be738b7699a",
+        "name": "process_ws",
+        "func": "switch (msg.topic)\n{\n  case \"timestamp\":\n  case \"file\": node.warn('TRIGGER: ' + msg.topic); break;\n  default: node.warn('EXTERNAL: ' + msg.payload);\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "6160b4da46db22ad"
+            ]
+        ]
+    },
+    {
+        "id": "d4b78eb653d6d50d",
+        "type": "websocket-client",
+        "path": "ws://localhost:1880/f1",
+        "tls": "",
+        "wholemsg": "false",
+        "hb": "0",
+        "subprotocol": ""
+    },
+    {
+        "id": "452f751e15337c46",
+        "type": "websocket-listener",
+        "path": "/f1",
+        "wholemsg": "false"
+    }
+]
