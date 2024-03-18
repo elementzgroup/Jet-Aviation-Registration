@@ -17,7 +17,7 @@
       Outgoing message: <input type="text" id="outgoingText"><br>
       Incoming message: <input type="text" id="incomingText" disabled="disabled"><br>
       Screenshot:<br>
-      <img id="imageScreenshot" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="No screenshot available" width="500" height="500"><br>
+      <img id="imageScreenshot" src="data:image/svg+xml;utf8,<svg width='100' height='100' version='1.1' xmlns='http://www.w3.org/2000/svg'><path d='M5 5 L95 95 M5 95 L95 5' stroke='%23f00' stroke-width='5'/></svg>" alt="No screenshot available" width="500" height="500"><br>
     </div>
   </body>
   <script type="module">
@@ -27,6 +27,9 @@
     const scanner = new QrScanner(document.getElementById("qr-video"),result=>setResult(result),{highlightScanRegion:true,highlightCodeOutline:true});
     scanner.setInversionMode("both");
     scanner.start();
+    var cams=[];
+    await QrScanner.listCameras().then(cameras => cameras.forEach(camera => {cams.push(camera.id)}));
+    scanner.setCamera(cams[new URLSearchParams(window.location.search).get("camid")]);
     function setResult(result)
     {
       console.log(result.data);
@@ -89,7 +92,7 @@
       }
     };
 // Usage - note optional wsaddr parameter in url:
-// http://127.0.0.1/ws/?wsaddr=ws://localhost:1880/f1
+// http://127.0.0.1/ws/?camid=0&wsaddr=ws://localhost:1880/f1
 // Camera access only available via localhost or https
 // Included webflow.json file for node-red testing
 </script>
