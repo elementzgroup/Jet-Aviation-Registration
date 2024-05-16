@@ -264,7 +264,7 @@
           XHR.onreadystatechange = function () {
             if (XHR.status == 200) {
               setTimeout(
-                window.open("https://www.jetaviation.com/.ae/", "_self"),
+                window.open("https://www.jetaviation.com/", "_self"),
                 3000
               );
             }
@@ -275,7 +275,7 @@
           FD.append("jobTitle", jobTitle);
           FD.append("industry", industryText);
           FD.append("email", emailText);
-          FD.append("receiveInfoText", receiveInfoText);
+          FD.append("receiveInfo", receiveInfoText);
           FD.append("regdate", regdate);
           FD.append("qrpng", qrpng.replace(/^data:image\/png;base64,/, ""));
           XHR.open("POST", "https://elementzlive.ae/app/JetaviationQR.php");
