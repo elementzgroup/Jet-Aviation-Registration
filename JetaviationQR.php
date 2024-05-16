@@ -8,7 +8,7 @@
   try
   {
     $db = new PDO('sqlite:users.jetaviation.db');
-    $db->exec("CREATE TABLE IF NOT EXISTS users (firstname TEXT NOT NULL,lastname TEXT NOT NULL,email TEXT NOT NULL,company TEXT NOT NULL,regdate TIMESTAMP NOT NULL,jobTitle TEXT NOT NULL,industry TEXT NOT NULL,receiveInfo TEXT NOT NULL,custom4 TEXT);");
+    $db->exec("CREATE TABLE IF NOT EXISTS users (firstname TEXT NOT NULL,lastname TEXT NOT NULL,email TEXT NOT NULL,company TEXT NOT NULL,regdate TIMESTAMP NOT NULL,jobTitle TEXT NOT NULL,industry TEXT NOT NULL,receiveInfo TEXT NOT NULL);");
     $db->exec("CREATE VIEW IF NOT EXISTS reglog AS SELECT firstname, lastname, email, company, jobTitle, industry, receiveInfo, strftime('%d/%m/%Y %H:%M:%S', datetime(regdate/1000, 'unixepoch', 'localtime')) regdatetime FROM users;");
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
