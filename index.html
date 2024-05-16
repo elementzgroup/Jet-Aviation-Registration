@@ -3,153 +3,330 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Jetaviation Registration</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jet Aviation EBACE24 Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      @font-face {
+        font-family: jetaviationFont;
+        src: url(/GT-Super-Display-Light-Trial.otf);
       }
-      body {
-        background: rgb(255, 255, 255);
-        /* background: linear-gradient(
-          0deg,
-          rgba(255, 255, 255, 1) 35%,
-          #041e42 95%
-        ); */
-        height: 100%;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+      @font-face {
+        font-family: jetaviationFontItalic;
+        src: url(/GT-Super-Display-Light-Italic-Trial.otf);
       }
-      #container {
-        place-items: center;
-        position: absolute;
-        width: 300px;
-        height: 600px;
-        padding: 25px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -60%);
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 10px 10px;
+
+      .HeroImage {
+        max-width: 95%;
+        height: auto;
+        display: block;
+        margin-top: -5%;
+        margin-right: auto;
+        margin-left: auto;
       }
-      #container img {
-        margin-left: 25px;
+
+      .logo {
+        max-width: 65%;
+        height: auto;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
       }
-      #container input {
-        width: 100%;
-        height: 50px;
+
+      .heading {
+        font-family: jetaviationFont;
+        text-align: center;
+        margin-top: -1%;
+        color: #f93822;
+        font-size: 10vw;
+      }
+
+      .italicHeading {
+        font-family: jetaviationFontItalic;
+      }
+
+      .formContainer {
+      }
+
+      .inputField {
+        width: 85%;
+        height: auto;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 5%;
         border: 1px solid gray;
         padding: 10px;
-        margin: 10px 0 10px;
       }
-      #container label {
-        font-size: 14px;
-        margin: 10px 0 50px;
-        padding: 10px;
+
+      .checkbox {
+        width: 1.25rem;
+        height: 1.25rem;
+        accent-color: navy;
       }
-      #container select {
-        width: 100%;
-        height: 30px;
-        border: 1px solid gray;
-        padding: 5px;
-        margin: 10px 0 15px;
+
+      .checkboxLabel {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
       }
-      #container button {
+
+      .checkboxContainer {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: -4%;
+      }
+
+      .dropdown {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        text-align: center;
+        margin-top: 5%;
+      }
+
+      .submitButton {
         width: 100%;
         height: 50px;
-        background: #240c54;
+        background: #f93822;
         color: white;
         border: none;
         outline: none;
         border-radius: 5px;
         cursor: pointer;
         font-weight: 500;
-        margin-top: 10px;
-      }
-      #notification {
-        font-weight: 200;
-        font-size: 14px;
-        text-align: center;
-        padding: 16px;
-      }
-      #msgthanks {
-        display: none;
-        border: 5px solid;
-        background: #ffffff;
-        position: fixed;
-        margin: 12px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-      }
-      #msgthanks p,
-      #msgthanksbutton {
-        xmargin: 20px;
-      }
-      #bgVideo {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
+        margin-top: 5%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: larger;
       }
     </style>
     <script src="easy.qrcode.min.js"></script>
   </head>
   <body>
-    <!-- <video autoplay muted loop id="bgVideo">
-      <source src="bgvid.webm" type="video/webm" />
-    </video> -->
-    <div id="container">
+    <img src="Dubai.jpg" alt="HeroImage" class="HeroImage" />
+
+    <img src="JetaviationLogo.svg" alt="Logo" class="logo" />
+
+    <h1 class="heading">Register,<span class="italicHeading"> Online</span></h1>
+
+    <div class="formContainer">
+      <input
+        type="text"
+        id="firstName"
+        class="inputField"
+        name="firstName"
+        maxlength="24"
+        required
+        placeholder="Firstname"
+      />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="inputField"
+        maxlength="32"
+        required
+        placeholder="Lastname"
+      />
+      <input
+        type="text"
+        id="company"
+        name="company"
+        class="inputField"
+        maxlength="80"
+        required
+        placeholder="Company"
+      />
+      <input
+        type="text"
+        id="jobTitle"
+        name="jobTitle"
+        class="inputField"
+        maxlength="80"
+        required
+        placeholder="Job Title"
+      />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="inputField"
+        maxlength="80"
+        required
+        placeholder="Email"
+      />
+
+      <div class="dropdown">
+        <label for="Field">I am a: </label>
+
+        <select name="Field" id="Field">
+          <option value="Jet Owner">Jet Owner</option>
+          <option value="Jet Operator">Jet Operator</option>
+          <option value="Aviation Professional">Aviation Professional</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="checkboxContainer">
+        <input
+          type="checkbox"
+          id="checkbox"
+          checked="checked"
+          onclick="Check()"
+          class="checkbox"
+        />
+        <label class="checkboxLabel" for="checkbox"
+          >receive communications from Jet Aviation</label
+        ><br />
+      </div>
+
+      <button type="submit" class="submitButton" id="SubmitButton">
+        SUBMIT
+      </button>
+      <p id="notification"></p>
+    </div>
+
+    <script>
+      let receiveInfoText = "true";
+
+      function Check() {
+        if (receiveInfoText == "true") {
+          receiveInfoText = "false";
+        } else {
+          receiveInfoText = "true";
+        }
+      }
+
+      document
+        .getElementById("SubmitButton")
+        .addEventListener("click", SubmitButton);
+      function SubmitButton() {
+        let firstNameText = document.getElementById("firstName").value;
+        let lastNameText = document.getElementById("lastName").value;
+        let companyText = document.getElementById("company").value;
+        let jobTitle = document.getElementById("jobTitle").value;
+        let emailText = document.getElementById("email").value;
+        let industryText = document.getElementById("Field").value;
+        let notification = document.getElementById("notification");
+        let regdate = new Date().getTime();
+
+        if (
+          firstName.value == "" ||
+          lastName.value == "" ||
+          email.value == "" ||
+          company.value == ""
+        ) {
+          notification.innerText = "Please complete all fields";
+          return;
+        }
+        if (
+          !email.value.match(
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+          )
+        ) {
+          notification.innerText = "Please enter a valid email address";
+          return;
+        }
+
+        let qrString = [
+          firstNameText,
+          lastNameText,
+          companyText,
+          jobTitle,
+          industryText,
+          emailText,
+          receiveInfoText,
+          regdate.toString(),
+        ].join("~");
+
+        console.log(qrString);
+
+        new QRCode(document.createElement("div"), {
+          text: qrString,
+          width: 400,
+          height: 400,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          quietZone: 22,
+          correctLevel: QRCode.CorrectLevel.L,
+          onRenderingEnd: function (options, dataURL) {
+            sendit(dataURL);
+          },
+        });
+
+        function sendit(qrpng) {
+          qr = document.createElement("img");
+          qr.src = qrpng;
+
+          const XHR = new XMLHttpRequest();
+          const FD = new FormData();
+          XHR.onreadystatechange = function () {
+            if (XHR.status == 200) {
+              setTimeout(
+                window.open("https://www.jetaviation.com/.ae/", "_self"),
+                3000
+              );
+            }
+          };
+          FD.append("firstname", firstNameText);
+          FD.append("lastname", lastNameText);
+          FD.append("company", companyText);
+          FD.append("jobTitle", jobTitle);
+          FD.append("industry", industryText);
+          FD.append("email", emailText);
+          FD.append("receiveInfoText", receiveInfoText);
+          FD.append("regdate", regdate);
+          FD.append("qrpng", qrpng.replace(/^data:image\/png;base64,/, ""));
+          XHR.open("POST", "https://elementzlive.ae/app/JetaviationQR.php");
+          XHR.send(FD);
+        }
+      }
+    </script>
+    <!-- <div id="container">
       <img src="JetaviationLogo.svg" width="200px" />
-      <form action="">
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          maxlength="24"
-          required
-          placeholder="Firstname"
-        />
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          maxlength="32"
-          required
-          placeholder="Lastname"
-        />
-        <input
-          type="text"
-          id="company"
-          name="company"
-          maxlength="80"
-          required
-          placeholder="Company"
-        />
-        <input
-          type="text"
-          id="jobTitle"
-          name="jobTitle"
-          maxlength="80"
-          required
-          placeholder="jobTitle"
-        />
-        <input
-          type="email"
-          id="email"
-          name="email"
-          maxlength="80"
-          required
-          placeholder="Email"
-        />
-        <!-- <select
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        maxlength="24"
+        required
+        placeholder="Firstname"
+      />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        maxlength="32"
+        required
+        placeholder="Lastname"
+      />
+      <input
+        type="text"
+        id="company"
+        name="company"
+        maxlength="80"
+        required
+        placeholder="Company"
+      />
+      <input
+        type="text"
+        id="jobTitle"
+        name="jobTitle"
+        maxlength="80"
+        required
+        placeholder="Job Title"
+      />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        maxlength="80"
+        required
+        placeholder="Email"
+      />
+
+      <!-- <select
           name="nationality"
           id="nationality"
           required
@@ -158,10 +335,21 @@
         >
           <option value="" disabled selected>Nationality</option>
         </select> -->
-      </form>
-      <button type="submit" id="SubmitButton">SUBMIT</button>
+
+    <!-- <button type="submit" id="SubmitButton">SUBMIT</button>
       <p id="notification"></p>
     </div>
+
+    <input
+      type="checkbox"
+      id="checkbox"
+      checked="checked"
+      name="checkbox"
+      value="True"
+    />
+    <label for="checkbox"
+      >I would like to receive communications from Jet Aviation?</label
+    ><br />
 
     <div id="msgthanks">
       <img src="logo.svg" width="200px" />
@@ -172,205 +360,7 @@
       </button>
     </div>
     <script>
-      const countries = [
-        "Afghanistan",
-        "Albania",
-        "Algeria",
-        "Andorra",
-        "Angola",
-        "Antigua and Deps",
-        "Argentina",
-        "Armenia",
-        "Australia",
-        "Austria",
-        "Azerbaijan",
-        "Bahamas",
-        "Bahrain",
-        "Bangladesh",
-        "Barbados",
-        "Belarus",
-        "Belgium",
-        "Belize",
-        "Benin",
-        "Bhutan",
-        "Bolivia",
-        "Bosnia and Herzegovina",
-        "Botswana",
-        "Brazil",
-        "Brunei",
-        "Bulgaria",
-        "Burkina Faso",
-        "Burundi",
-        "Cambodia",
-        "Cameroon",
-        "Canada",
-        "Cape Verde",
-        "Central African Republic",
-        "Chile",
-        "China",
-        "Columbia",
-        "Comoros",
-        "Republic of Congo",
-        "Democratic Republic of Congo",
-        "Democratic Republic of Korea",
-        "Costa Rica",
-        "Croatia",
-        "Cuba",
-        "Cyprus",
-        "Czech Republic",
-        "Denmark",
-        "Djibouti",
-        "Dominica",
-        "Dominican Republic",
-        "East Timor",
-        "Ecuador",
-        "Egypt",
-        "El Salvador",
-        "Equatorial Guinea",
-        "Eritrea",
-        "Estonia",
-        "Ethiopia",
-        "Federated States of Micronesia",
-        "Fiji",
-        "Finland",
-        "France",
-        "Gabon",
-        "Gambia",
-        "Georgia",
-        "Germany",
-        "Ghana",
-        "Greece",
-        "Greneda",
-        "Guinea",
-        "Guinea Bissau",
-        "Guyana",
-        "Haiti",
-        "Honduras",
-        "Hungary",
-        "Iceland",
-        "India",
-        "Indonesia",
-        "Iran",
-        "Iraq",
-        "Ireland",
-        "Israel",
-        "Italy",
-        "Jamaica",
-        "Japan",
-        "Jordan",
-        "Kazakhstan",
-        "Kenya",
-        "Kiribiti",
-        "Kosovo",
-        "Kuwait",
-        "Kyrgyzstan",
-        "Laos",
-        "Lebanon",
-        "Lesotho",
-        "Liberia",
-        "Libya",
-        "Liechtenstein",
-        "Lithuania",
-        "Luxembourg",
-        "Macedonia",
-        "Madagascar",
-        "Malawi",
-        "Malasiya",
-        "Maldives",
-        "Mali",
-        "Malta",
-        "Marshall Island",
-        "Mauritiana",
-        "Mauritius",
-        "Mexico",
-        "Moldova",
-        "Monaco",
-        "Mongolia",
-        "Montenegro",
-        "Morocco",
-        "Mozambique",
-        "Myanmar",
-        "Namibia",
-        "Nauru",
-        "Nepal",
-        "Netherlands",
-        "New Zealand",
-        "Nicaragua",
-        "Niger",
-        "Nigeria",
-        "Norway",
-        "Oman",
-        "Pakistan",
-        "Palau",
-        "Panama",
-        "Papua New Guinea",
-        "Paraguay",
-        "Peru",
-        "Philippines",
-        "Poland",
-        "Portugal",
-        "Qatar",
-        "Romania",
-        "Russia",
-        "Rawanda",
-        "Saint Kitts and Nevis",
-        "Saint Lucia",
-        "Saint Vincent and Grenadines",
-        "Samoa",
-        "San Marino",
-        "Sao Tome & Principe",
-        "Saudi Arabia",
-        "Senegal",
-        "Serbia",
-        "Seychelles",
-        "Sierra Leone",
-        "Singapore",
-        "Slovakia",
-        "Slovenia",
-        "Solomon Island",
-        "Somalia",
-        "South Africa",
-        "Soiuth Sudan",
-        "South Korea",
-        "Spain",
-        "Sri Lanka",
-        "Sudan",
-        "Suriname",
-        "Swaziland",
-        "Sweden",
-        "Switzerland",
-        "Syria",
-        "Taiwan",
-        "Tajikistan",
-        "Tanzania",
-        "Thailand",
-        "Togo",
-        "Tonga",
-        "Trinidad and Tobago",
-        "Tunisia",
-        "Turkey",
-        "Turkmenistan",
-        "Tuvalu",
-        "Uganda",
-        "Ukraine",
-        "United Arab Emirates",
-        "United Kingdom",
-        "United States of America",
-        "Uruguay",
-        "Uzbekistan",
-        "Vanuatu",
-        "Vatican City",
-        "Venezuela",
-        "Vietnam",
-        "Yemen",
-        "Zambia",
-        "Zimbabwe",
-      ];
-      let select = document.getElementById("nationality");
-      countries.forEach((country) => {
-        const option = new Option(country, country);
-        select.appendChild(option);
-      });
+      
       document
         .getElementById("SubmitButton")
         .addEventListener("click", SubmitButton);
@@ -441,6 +431,6 @@
           XHR.send(FD);
         }
       }
-    </script>
+    </script> -->
   </body>
 </html>
