@@ -1,4 +1,4 @@
-# F1 Simulator registration 
-Microsite for F1 Simulator registration for use with the scoreboard app  
-http://app.elementz.live/f1scoreboard
+# Jet Aviation EBACE24
+Microsite for Jet Aviation EBACE 24 registration  
+https://app.elementz.live/Jet-Aviation-Registration/
 
