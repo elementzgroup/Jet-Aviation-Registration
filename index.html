@@ -101,6 +101,16 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: larger;
       }
+
+      .notification{
+        text-align: center;
+        padding-top: 10px;
+        margin-bottom: -10px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #f93822;
+        font-weight: 600;
+      }
+
     </style>
     <script src="easy.qrcode.min.js"></script>
   </head>
@@ -182,10 +192,12 @@
         ><br />
       </div>
 
+      <p class="notification" id="notification"></p>
+
       <button type="submit" class="submitButton" id="SubmitButton">
         SUBMIT
       </button>
-      <p id="notification"></p>
+
     </div>
 
     <script>
@@ -284,154 +296,6 @@
         }
       }
     </script>
-    <!-- <div id="container">
-      <img src="JetaviationLogo.svg" width="200px" />
-      <input
-        type="text"
-        id="firstName"
-        name="firstName"
-        maxlength="24"
-        required
-        placeholder="Firstname"
-      />
-      <input
-        type="text"
-        id="lastName"
-        name="lastName"
-        maxlength="32"
-        required
-        placeholder="Lastname"
-      />
-      <input
-        type="text"
-        id="company"
-        name="company"
-        maxlength="80"
-        required
-        placeholder="Company"
-      />
-      <input
-        type="text"
-        id="jobTitle"
-        name="jobTitle"
-        maxlength="80"
-        required
-        placeholder="Job Title"
-      />
-      <input
-        type="email"
-        id="email"
-        name="email"
-        maxlength="80"
-        required
-        placeholder="Email"
-      />
-
-      <!-- <select
-          name="nationality"
-          id="nationality"
-          required
-          required
-          placeholder="Nationality"
-        >
-          <option value="" disabled selected>Nationality</option>
-        </select> -->
-
-    <!-- <button type="submit" id="SubmitButton">SUBMIT</button>
-      <p id="notification"></p>
-    </div>
-
-    <input
-      type="checkbox"
-      id="checkbox"
-      checked="checked"
-      name="checkbox"
-      value="True"
-    />
-    <label for="checkbox"
-      >I would like to receive communications from Jet Aviation?</label
-    ><br />
-
-    <div id="msgthanks">
-      <img src="logo.svg" width="200px" />
-      <p>Thank you for registering</p>
-      <p>Please check your email</p>
-      <button onclick="location.href = 'https://wim.ae/';">
-        Continue to main site
-      </button>
-    </div>
-    <script>
-      
-      document
-        .getElementById("SubmitButton")
-        .addEventListener("click", SubmitButton);
-      function SubmitButton() {
-        let firstNameText = document.getElementById("firstName").value;
-        let lastNameText = document.getElementById("lastName").value;
-        let emailText = document.getElementById("email").value;
-        let nationalityText = document.getElementById("nationality").value;
-        let notification = document.getElementById("notification");
-        let regdate = new Date().getTime();
-        if (
-          firstName.value == "" ||
-          lastName.value == "" ||
-          email.value == "" ||
-          nationality.value == ""
-        ) {
-          notification.innerText = "Please complete all fields";
-          return;
-        }
-        if (
-          !email.value.match(
-            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-          )
-        ) {
-          notification.innerText = "Please enter a valid email address";
-          return;
-        }
-        document.getElementById("container").style.display = "none";
-        document.getElementById("msgthanks").style.display = "block";
-        let qrString = [
-          firstNameText,
-          lastNameText,
-          emailText,
-          nationalityText,
-          regdate.toString(),
-        ].join("~");
-        new QRCode(document.createElement("div"), {
-          text: qrString,
-          width: 400,
-          height: 400,
-          colorDark: "#000000",
-          colorLight: "#ffffff",
-          quietZone: 22,
-          correctLevel: QRCode.CorrectLevel.L,
-          onRenderingEnd: function (options, dataURL) {
-            sendit(dataURL);
-          },
-        });
-        function sendit(qrpng) {
-          //qr=document.createElement("img");qr.src=qrpng;document.body.appendChild(qr);return;
-          const XHR = new XMLHttpRequest();
-          const FD = new FormData();
-          XHR.onreadystatechange = function () {
-            if (XHR.status == 200) {
-              setTimeout(
-                window.open("https://www.jetaviation.com/.ae/", "_self"),
-                3000
-              );
-            }
-          };
-          FD.append("firstname", firstNameText);
-          FD.append("lastname", lastNameText);
-          FD.append("email", emailText);
-          FD.append("nationality", nationalityText);
-          FD.append("regdate", regdate);
-          FD.append("qrpng", qrpng.replace(/^data:image\/png;base64,/, ""));
-          XHR.open("POST", "https://elementzlive.ae/app/f1/f1qr.php");
-          XHR.send(FD);
-        }
-      }
-    </script> -->
+   
   </body>
 </html>
