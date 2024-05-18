@@ -237,7 +237,7 @@
           qr.src = qrpng;
           const XHR = new XMLHttpRequest();
           const FD = new FormData();
-          XHR.onreadystatechange = function () { return;
+          XHR.onreadystatechange = function () {
             if (XHR.status == 200) {
               setTimeout(
                 window.open("https://www.jetaviation.com/", "_self"),
