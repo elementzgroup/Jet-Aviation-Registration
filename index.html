@@ -14,7 +14,6 @@
         font-family: jetaviationFontItalic;
         src: url(GT-Super-Display-Light-Italic-Trial.otf);
       }
-
       .HeroImage {
         max-width: 95%;
         height: auto;
@@ -23,7 +22,6 @@
         margin-right: auto;
         margin-left: auto;
       }
-
       .logo {
         max-width: 65%;
         height: auto;
@@ -31,7 +29,6 @@
         margin-right: auto;
         margin-left: auto;
       }
-
       .heading {
         font-family: jetaviationFont;
         text-align: center;
@@ -39,15 +36,12 @@
         color: #f93822;
         font-size: 10vw;
       }
-
       .italicHeading {
         font-family: jetaviationFontItalic;
       }
-
       .formContainer {
         background-color: #fbfaf9;
       }
-
       .inputField {
         width: 85%;
         height: auto;
@@ -58,24 +52,20 @@
         border: 1px solid gray;
         padding: 10px;
       }
-
       .checkbox {
         width: 1.25rem;
         height: 1.25rem;
         accent-color: navy;
       }
-
       .checkboxLabel {
         font-family: Arial, Helvetica, sans-serif;
         font-size: small;
       }
-
       .checkboxContainer {
         text-align: center;
         margin-top: 5%;
         margin-bottom: -4%;
       }
-
       .dropdown {
         font-family: Arial, Helvetica, sans-serif;
         font-size: small;
@@ -86,7 +76,6 @@
         text-align: center;
         margin-top: 5%;
       }
-
       .submitButton {
         width: 100%;
         height: 50px;
@@ -101,7 +90,6 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: larger;
       }
-
       .notification {
         text-align: center;
         padding-top: 10px;
@@ -115,11 +103,8 @@
   </head>
   <body>
     <img src="Dubai.jpg" alt="HeroImage" class="HeroImage" />
-
     <img src="JetaviationLogo.svg" alt="Logo" class="logo" />
-
     <h1 class="heading">Register,<span class="italicHeading"> Online</span></h1>
-
     <div class="formContainer">
       <input
         type="text"
@@ -166,10 +151,8 @@
         required
         placeholder="Email"
       />
-
       <div class="dropdown">
         <label for="Field">I am a: </label>
-
         <select name="Field" id="Field">
           <option value="Jet Owner">Jet Owner</option>
           <option value="Jet Operator">Jet Operator</option>
@@ -177,41 +160,29 @@
           <option value="Other">Other</option>
         </select>
       </div>
-
       <div class="checkboxContainer">
         <input
           type="checkbox"
-          id="checkbox"
+          id="infocheckbox"
           checked="checked"
-          onclick="Check()"
           class="checkbox"
         />
         <label class="checkboxLabel" for="checkbox"
           >receive communications from Jet Aviation</label
         ><br />
       </div>
-
       <p class="notification" id="notification"></p>
-
       <button type="submit" class="submitButton" id="SubmitButton">
         SUBMIT
       </button>
     </div>
-
     <script>
       let receiveInfoText = "true";
-
-      function Check() {
-        if (receiveInfoText == "true") {
-          receiveInfoText = "false";
-        } else {
-          receiveInfoText = "true";
-        }
+      document.getElementById("infocheckbox").addEventListener("click", InfoClick);
+      function InfoClick() {
+        document.getElementById("infocheckbox").checked?receiveInfoText = "true":receiveInfoText = "false";
       }
-
-      document
-        .getElementById("SubmitButton")
-        .addEventListener("click", SubmitButton);
+      document.getElementById("SubmitButton").addEventListener("click", SubmitButton);
       function SubmitButton() {
         let firstNameText = document.getElementById("firstName").value;
         let lastNameText = document.getElementById("lastName").value;
@@ -221,7 +192,6 @@
         let industryText = document.getElementById("Field").value;
         let notification = document.getElementById("notification");
         let regdate = new Date().getTime();
-
         if (
           firstName.value == "" ||
           lastName.value == "" ||
@@ -239,7 +209,6 @@
           notification.innerText = "Please enter a valid email address";
           return;
         }
-
         let qrString = [
           firstNameText,
           lastNameText,
@@ -250,9 +219,7 @@
           receiveInfoText,
           regdate.toString(),
         ].join("~");
-
         console.log(qrString);
-
         new QRCode(document.createElement("div"), {
           text: qrString,
           width: 400,
@@ -265,14 +232,12 @@
             sendit(dataURL);
           },
         });
-
         function sendit(qrpng) {
           qr = document.createElement("img");
           qr.src = qrpng;
-
           const XHR = new XMLHttpRequest();
           const FD = new FormData();
-          XHR.onreadystatechange = function () {
+          XHR.onreadystatechange = function () { return;
             if (XHR.status == 200) {
               setTimeout(
                 window.open("https://www.jetaviation.com/", "_self"),
