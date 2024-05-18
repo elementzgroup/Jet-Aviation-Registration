@@ -19,7 +19,7 @@
     $receiveInfo = $_POST["receiveInfo"];
     $regdate = intval($_POST["regdate"]);
     $dbq = $db->prepare("INSERT INTO `users` (firstname,lastname,email,company,regdate,jobTitle,industry,receiveInfo) VALUES (:firstname,:lastname,:email,:company,:regdate,:jobTitle,:industry,:receiveInfo);");
-    $dbq->execute(['firstname'=>$firstname,'lastname'=>$lastname,'email'=>$email,'company'=>$company, 'regdate'=>$regdate, 'jobTitle'=>$jobTitle,'industry'=>$industry,'receiveInfo'=>$receieveInfo]);
+    $dbq->execute(['firstname'=>$firstname,'lastname'=>$lastname,'email'=>$email,'company'=>$company, 'regdate'=>$regdate, 'jobTitle'=>$jobTitle,'industry'=>$industry,'receiveInfo'=>$receiveInfo]);
     $db = NULL;
     echo "Database updated";
   }
