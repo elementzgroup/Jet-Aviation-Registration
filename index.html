@@ -241,7 +241,7 @@
             if (XHR.status == 200) {
               setTimeout(
                 window.open("https://www.jetaviation.com/", "_self"),
-                3000
+                2000
               );
             }
           };
@@ -256,6 +256,9 @@
           FD.append("qrpng", qrpng.replace(/^data:image\/png;base64,/, ""));
           XHR.open("POST", "https://elementzlive.ae/app/JetaviationQR.php");
           XHR.send(FD);
+
+
+
         }
       }
     </script>
