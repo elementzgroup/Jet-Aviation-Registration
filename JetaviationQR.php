@@ -38,10 +38,8 @@
     $mail->isSMTP();
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
-    // $mail->Username = "jetaviationebace24@gmail.com";
-    // $mail->Password = "jqvhjkbawirulsrd";
-    $mail->Username = "noreply@elementz.live";
-    $mail->Password = "birzjbellcxqqwzy";
+    $mail->Username = "jetaviationebace24@gmail.com";
+    $mail->Password = "jqvhjkbawirulsrd";
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = 465;
     $mail->CharSet = PHPMailer::CHARSET_UTF8;
@@ -55,7 +53,7 @@
     $mail->Body = "<div dir='ltr' lang='en'>Hello {$_POST['firstname']} {$_POST['lastname']},<br/><br/>Thank you for registering for the Jet Aviation stand at EBACE24.<br/><br/>Attached is your personalized QR code.<br/><br/>Best regards,<br/><br/>Jet Aviation<br/><br/></div><div><img src='cid:qrpng' alt='' /><br/><img src='cid:ralogo' alt='' /><br/></div>";
     $mail->send();
   }
-    catch (Exception $e)
+  catch (Exception $e)
   {
     echo 'Mailer Error: {$mail->ErrorInfo}';
   }
