@@ -102,9 +102,9 @@
     <script src="easy.qrcode.min.js"></script>
   </head>
   <body>
-    <img src="Dubai.jpg" alt="HeroImage" class="HeroImage" />
+    <!-- <img src="Dubai.jpg" alt="HeroImage" class="HeroImage" /> -->
     <img src="JetaviationLogo.svg" alt="Logo" class="logo" />
-    <h1 class="heading">Register,<span class="italicHeading"> Online</span></h1>
+    <!-- <h1 class="heading">Register,<span class="italicHeading"> Online</span></h1> -->
     <div class="formContainer">
       <input
         type="text"
@@ -178,11 +178,17 @@
     </div>
     <script>
       let receiveInfoText = "true";
-      document.getElementById("infocheckbox").addEventListener("click", InfoClick);
+      document
+        .getElementById("infocheckbox")
+        .addEventListener("click", InfoClick);
       function InfoClick() {
-        document.getElementById("infocheckbox").checked?receiveInfoText = "true":receiveInfoText = "false";
+        document.getElementById("infocheckbox").checked
+          ? (receiveInfoText = "true")
+          : (receiveInfoText = "false");
       }
-      document.getElementById("SubmitButton").addEventListener("click", SubmitButton);
+      document
+        .getElementById("SubmitButton")
+        .addEventListener("click", SubmitButton);
       function SubmitButton() {
         let firstNameText = document.getElementById("firstName").value;
         let lastNameText = document.getElementById("lastName").value;
@@ -256,9 +262,6 @@
           FD.append("qrpng", qrpng.replace(/^data:image\/png;base64,/, ""));
           XHR.open("POST", "https://elementzlive.ae/app/JetaviationQR.php");
           XHR.send(FD);
-
-
-
         }
       }
     </script>
