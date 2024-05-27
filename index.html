@@ -98,12 +98,20 @@
         color: #f93822;
         font-weight: 600;
       }
+
+      .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+      }
     </style>
     <script src="easy.qrcode.min.js"></script>
   </head>
   <body>
-    <!-- <img src="Dubai.jpg" alt="HeroImage" class="HeroImage" /> -->
-    <img src="JetaviationLogo.svg" alt="Logo" class="logo" />
+    <img src="bannerCompressed.jpg" alt="HeroImage" class="HeroImage" />
     <!-- <h1 class="heading">Register,<span class="italicHeading"> Online</span></h1> -->
     <div class="formContainer">
       <input
@@ -175,6 +183,9 @@
       <button type="submit" class="submitButton" id="SubmitButton">
         SUBMIT
       </button>
+      <div class="footer">
+        <img src="JetaviationLogo.svg" alt="Logo" class="logo" />
+      </div>
     </div>
     <script>
       let receiveInfoText = "true";
