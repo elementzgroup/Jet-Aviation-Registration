@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jet Aviation Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Include QR Code library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Include EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+  </head>
+  <body>
+    <img src="bannerCompressed.jpg" alt="Hero Image" class="hero-image" />
+
+    <div class="form-container">
+      <input
+        type="text"
+        id="firstName"
+        class="input-field"
+        name="firstName"
+        maxlength="24"
+        required
+        placeholder="First Name"
+      />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="input-field"
+        maxlength="32"
+        required
+        placeholder="Last Name"
+      />
+      <input
+        type="text"
+        id="company"
+        name="company"
+        class="input-field"
+        maxlength="80"
+        required
+        placeholder="Company"
+      />
+      <input
+        type="text"
+        id="jobTitle"
+        name="jobTitle"
+        class="input-field"
+        maxlength="80"
+        required
+        placeholder="Job Title"
+      />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="input-field"
+        maxlength="80"
+        required
+        placeholder="Email"
+      />
+      <div class="dropdown">
+        <label for="Field">I am a:</label>
+        <select name="Field" id="Field">
+          <option value="Jet Owner">Jet Owner</option>
+          <option value="Jet Operator">Jet Operator</option>
+          <option value="Aviation Professional">Aviation Professional</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          id="infocheckbox"
+          checked="checked"
+          class="checkbox"
+        />
+        <label class="checkbox-label" for="infocheckbox">
+          Receive communications from Jet Aviation
+        </label>
+      </div>
+      <p class="notification" id="notification"></p>
+      <button type="submit" class="submit-button" id="SubmitButton">
+        SUBMIT
+      </button>
+    </div>
+    <img src="JetaviationLogo.svg" alt="Logo" class="logo" />
+    <div class="footer"></div>
+    <!-- Initialize EmailJS -->
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "D7GGwMsgzyM9zjIQP",
+        });
+      })();
+    </script>
+    <!-- Link to external JavaScript file -->
+    <script src="./script.js"></script>
+  </body>
+</html>

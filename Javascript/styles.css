@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .logo {
+    max-width: 50%;
+    padding-top: 5%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .form-container {
+    background-color: #fbfaf9;
+    padding: 20px;
+  }
+  
+  .input-field {
+    width: 90%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .dropdown {
+    margin: 10px auto;
+    display: block;
+    width: 90%;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .checkbox-container {
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: navy;
+    margin-right: 10px;
+  }
+  
+  .checkbox-label {
+    font-size: small;
+  }
+  
+  .submit-button {
+    width: 90%;
+    padding: 15px;
+    margin: 20px auto;
+    background-color: #f93822;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: larger;
+    display: block;
+  }
+  
+  .notification {
+    text-align: center;
+    color: #f93822;
+    font-weight: 600;
+  }
+  
+  .footer {
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+  
+  @media (max-width: 600px) {
+    .logo {
+      max-width: 80%;
+    }
+  }
+  
